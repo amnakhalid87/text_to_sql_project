@@ -1,12 +1,16 @@
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_chroma import Chroma
+import sys
 from pathlib import Path
+from langchain_huggingface import HuggingFaceEmbeddings  
+from langchain_chroma import Chroma
 from config import HF_MODEL
-from src.custom_state import CustomState
+from src import CustomState
 
 base_dir = Path(__file__).resolve().parent.parent
-chroma_path = base_dir / "chroma_db"
+sys.path.append(base_dir.as_posix())
+
 embedding_model = HuggingFaceEmbeddings(model_name=HF_MODEL)
+
+chroma_path = base_dir / "chroma_db"
 local_db = Chroma(persist_directory=str(chroma_path), embedding_function=embedding_model)
 
 
