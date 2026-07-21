@@ -30,6 +30,14 @@ jobs:
 
     - name: Run Tests
       env:
-        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         PYTHONPATH: .
+        AIVEN_DATABASE_URL: ${{ secrets.AIVEN_DATABASE_URL }}
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        HF_MODEL: ${{ secrets.HF_MODEL }}
+        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        LANGSMITH_TRACING: ${{ secrets.LANGSMITH_TRACING }}
+        LANGSMITH_ENDPOINT: ${{ secrets.LANGSMITH_ENDPOINT }}
+        LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
+        LANGSMITH_PROJECT: ${{ secrets.LANGSMITH_PROJECT }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: pytest tests/ -v
