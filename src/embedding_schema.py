@@ -1,7 +1,7 @@
 from langchain_core.documents import Document
-from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from pathlib import Path
+from langchain_huggingface import HuggingFaceEmbeddings  
 from config import HF_MODEL
 def embed_schema():
      
