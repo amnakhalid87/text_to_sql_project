@@ -31,4 +31,5 @@ jobs:
     - name: Run Tests
       env:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        PYTHONPATH: .
       run: pytest tests/ -v
