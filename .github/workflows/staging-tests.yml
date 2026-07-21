@@ -1,8 +1,10 @@
-name: CI Production Pipeline
+name: Staging - Test and Lint
 
 on:
   push:
-    branches: [ main ]  
+    branches: [staging]
+  pull_request:
+    branches: [main]
 
 jobs:
   validate-and-test:
