@@ -1,22 +1,18 @@
 name: Main - Build and Push Docker Image
-
 on:
   push:
     branches: [main]
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
-
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-
     - name: Build and Push
       uses: docker/build-push-action@v5
       with:
@@ -24,5 +20,5 @@ jobs:
         file: ./dockerfile
         push: true
         tags: |
-          amnakhalid87/text-to-sql-chatbot:latest
-          amnakhalid87/text-to-sql-chatbot:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/text-to-sql-chatbot:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/text-to-sql-chatbot:${{ github.sha }}
